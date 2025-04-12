@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bell Scheduler</title>
+</head>
+<body>
+  <h2>Bell Schedule</h2>
+  <form method="POST" action="/add_time">
+    <input type="time" name="time" required>
+    <input type="submit" value="Add Time">
+  </form>
+  <ul>
+    {% for t in schedule %}
+      <li>{{ t }}
+        <form method="POST" action="/delete_time" style="display:inline">
+          <input type="hidden" name="time" value="{{ t }}">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+  <br>
+  <a href="/logout">Logout</a>
+</body>
+</html>
